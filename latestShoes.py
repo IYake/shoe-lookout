@@ -1,4 +1,6 @@
 import requests, bs4
+import os 
+from selenium import webdriver
 
 res = requests.get('http://store.nike.com/us/en_us/pw/new-mens-shoes/meZ7puZoi3?sortOrder=publishdate|desc')
 res.raise_for_status()
