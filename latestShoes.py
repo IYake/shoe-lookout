@@ -1,26 +1,31 @@
-import requests, bs4
 import os 
 from selenium import webdriver
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 chromedriver = "/Users/devinsuttles/Downloads/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
 driver = webdriver.Chrome(chromedriver)
 url = raw_input("Enter URL:")
-
 driver.get(url)
-driver.set_page_load_timeout(25)
-driver.implicitly_wait(20)
+wait = WebDriverWait(driver,10)
 
-#Need to figure out how to click on this add to cart button as the last step 
-<button id="buyingtools-add-to-cart-button" type="submit" class="js-add-to-cart add-to-cart nsg-button nsg-grad--nike-orange">
-ADD TO CART </button>
-driver.find_element_by_xpath('//*[contains(text(),"ADD TO CART")]').click()          
+#refreshes the page if it's not ressponding
+driver.set_page_load_timeout(30)
+
+#opening size dropdown
+size_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".exp-pdp-size-and-quantity-container a.exp-pdp-size-dropdown")))
+actions = ActionChains(driver)
+actions.move_to_element(size_button).click().perform()
+
+# selecting size
+size = wait.until(EC.visibility_of_element_located((By.XPATH, "//li[contains(@class, 'nsg-form--drop-down--option') and normalize-space(.) = '9.5']")))
+actions = ActionChains(driver)
+actions.move_to_element(size).click().perform()
+
+#add to cart
+driver.find_element_by_id("buyingtools-add-to-cart-button").click()        
 
 
-res = requests.get('http://store.nike.com/us/en_us/pw/new-mens-shoes/meZ7puZoi3?sortOrder=publishdate|desc')
-res.raise_for_status()
-nikeSoup = bs4.BeautifulSoup(res.text)
-
-
-products = nikeSoup.select('.product-name')
-print products[0].text
