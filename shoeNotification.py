@@ -26,8 +26,6 @@ smtpObj.starttls() #TLS encryption for connection
 
 smtpObj.login(FROM, PW)
 
-
-
 smtpObj.sendmail(FROM, TO, MSG)
 
 smtpObj.quit()
