@@ -9,6 +9,7 @@ chromedriver = "/Users/devinsuttles/Downloads/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
 driver = webdriver.Chrome(chromedriver)
 url = raw_input("Enter URL:")
+driver.maximize_window()
 driver.get(url)
 wait = WebDriverWait(driver,10)
 
