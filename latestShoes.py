@@ -29,4 +29,7 @@ actions.move_to_element(size).click().perform()
 #add to cart
 driver.find_element_by_id("buyingtools-add-to-cart-button").click()        
 
-
+#checkout
+checkout_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".checkout-button")))
+actions = ActionChains(driver)
+actions.move_to_element(checkout_button).click().perform()
