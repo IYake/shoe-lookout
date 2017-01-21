@@ -5,6 +5,7 @@ Created on Tue Oct 25 13:41:09 2016
 """
 
 
+
 import os 
 from selenium import webdriver
 from selenium.webdriver import ActionChains
@@ -12,13 +13,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+#creating the chrome driver 
 chromedriver = "/Users/devinsuttles/Downloads/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
 driver = webdriver.Chrome(chromedriver)
-#New nike men shoes url:http://swoo.sh/2j8FWMT
-url = raw_input("Enter URL:")
+
 driver.maximize_window()
-driver.get(url)
+driver.get("http://swoo.sh/2j8FWMT")
 wait = WebDriverWait(driver,10)
 
 #refreshes the page if it's not ressponding
@@ -39,4 +40,4 @@ def checkout():
 	actions = ActionChains(driver)
 	actions.move_to_element(checkout_button).click().perform()
 
-checkout()
+
