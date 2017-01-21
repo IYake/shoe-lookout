@@ -9,23 +9,25 @@ This file will become a function to be imported into the main.py
 
 import smtplib
 
-FROM = 'shoebot3000@gmail.com'
-TO = 'iangyake@gmail.com' # Your email
-MSG = """\
-Subject: Your shoes are here!
-
-Your nike shoe order has been added to cart. Check it out: https://goo.gl/8gtuWN
+def notify(recipient):
+    #recipient = 'iangyake@gmail.com'
+    FROM = 'shoebot3000@gmail.com'
+    TO = recipient # Your email
+    MSG = """\
+ Subject: Your shoes are here\n
+ 
+ 
+ Your nike shoe order has been added to cart. Check it out: https://goo.gl/8gtuWN
 """
-PW = '' # shoebot3000 password
 
-#Connect to SMTP server [Server domain name, Port]
-smtpObj = smtplib.SMTP('smtp.gmail.com', 587)
-smtpObj.ehlo()
+    #Connect to SMTP server [Server domain name, Port]
+    smtpObj = smtplib.SMTP('smtp.gmail.com', 587)
+    smtpObj.ehlo()
 
-smtpObj.starttls() #TLS encryption for connection
+    smtpObj.starttls() #TLS encryption for connection
 
-smtpObj.login(FROM, PW)
+    smtpObj.login(FROM, '2kZf7njz')
 
-smtpObj.sendmail(FROM, TO, MSG)
+    smtpObj.sendmail(FROM, TO, MSG)
 
-smtpObj.quit()
+    smtpObj.quit()
