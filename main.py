@@ -20,7 +20,8 @@ while (not shoesMatch):
         
     latestShoe = shoe_checker.updateShoe()
     
-    if count == 50:
+    #stop if between 10 and 20 hours
+    if count == 72000:
         shoesMatch = True
         
 cart.checkout()
