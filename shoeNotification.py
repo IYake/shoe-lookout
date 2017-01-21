@@ -26,7 +26,7 @@ def notify(recipient):
 
     smtpObj.starttls() #TLS encryption for connection
 
-    smtpObj.login(FROM, '2kZf7njz')
+    smtpObj.login(FROM, '') #enter the password
 
     smtpObj.sendmail(FROM, TO, MSG)
 
