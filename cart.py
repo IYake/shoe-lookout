@@ -22,7 +22,7 @@ def checkout():
 	wait = WebDriverWait(driver,10)
 	driver.set_page_load_timeout(30)
 #to look for newest shoe 
-	find = driver.find_element_by_class_name('product-display-name').click()
+	driver.find_element_by_class_name('product-display-name').click()
 #size button 
 	size_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".exp-pdp-size-and-quantity-container a.exp-pdp-size-dropdown")))
 	actions = ActionChains(driver)
