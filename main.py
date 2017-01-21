@@ -4,6 +4,7 @@ import cart, shoeNotification, shoe_checker
 #Go to shoe product page
 #Add shoe to Cart
 #Notify
+
 correctShoe = "Nike SB Zoom Stefan Janoski Premium High Tape"
 
 count = 0
