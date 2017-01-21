@@ -22,6 +22,8 @@ def updateShoe():
     
 latestShoe = updateShoe()
 
+#Put this in main.py
+"""
 count = 0
 shoesMatch = False
 
@@ -38,4 +40,4 @@ while (not shoesMatch):
     if count == 50:
         shoesMatch = True
         
-print latestShoe
+print latestShoe"""
