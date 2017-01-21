@@ -21,23 +21,3 @@ def updateShoe():
     return str(shoe) #shoe datatype is default as unicode
     
 latestShoe = updateShoe()
-
-#Put this in main.py
-"""
-count = 0
-shoesMatch = False
-
-while (not shoesMatch):
-    print "checking " + str(count)
-    ##Get the latest shoe and update latestShoe variable
-    if (correctShoe == latestShoe):
-        shoesMatch = True
-    else:
-        count += 1
-        
-    latestShoe = updateShoe()
-    
-    if count == 50:
-        shoesMatch = True
-        
-print latestShoe"""
