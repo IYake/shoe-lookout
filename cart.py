@@ -18,11 +18,9 @@ chromedriver = "/Users/Ian/Downloads/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
 driver = webdriver.Chrome(chromedriver)
 
-
 def checkout():
-	#driver.maximize_window()
-	wait = WebDriverWait(driver,5)
-	driver.set_page_load_timeout(5)
+	wait = WebDriverWait(driver,10)
+	driver.set_page_load_timeout(15)
 	try:
 		driver.get("http://swoo.sh/2j8FWMT")
 	except TimeoutException:
@@ -32,10 +30,10 @@ def checkout():
 #size button
 	try: 
 		size_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".exp-pdp-size-and-quantity-container a.exp-pdp-size-dropdown")))
- 	except TimeoutException:
+	except TimeoutException: #if the page is loading for too long, stop it and then get size_button
 		driver.execute_script("window.stop();")
-  
-	size_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".exp-pdp-size-and-quantity-container a.exp-pdp-size-dropdown")))
+		size_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".exp-pdp-size-and-quantity-container a.exp-pdp-size-dropdown")))
+
 
 	actions = ActionChains(driver)
 	actions.move_to_element(size_button).click().perform()
