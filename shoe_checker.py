@@ -20,4 +20,3 @@ def updateShoe():
 
     return str(shoe) #shoe datatype is default as unicode
     
-latestShoe = updateShoe()
