@@ -17,6 +17,8 @@ from selenium.common.exceptions import TimeoutException
 chromedriver = "/Users/Ian/Downloads/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
 driver = webdriver.Chrome(chromedriver)
+#read from text file 
+file = open("Nike.txt","r")
 
 def checkout():
 	wait = WebDriverWait(driver,10)
