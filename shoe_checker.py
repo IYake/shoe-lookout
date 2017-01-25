@@ -20,3 +20,12 @@ def updateShoe():
 
     return str(shoe) #shoe datatype is default as unicode
     
+def isWordInString(word, string, matches, index):
+    if matches == (len(word)):
+        return True
+    elif index > (len(string) - 1):
+        return False
+    elif word[matches] == string[index]:
+        return isWordInString(word, string, matches + 1, index + 1)
+    elif word[matches] != string[index]:
+        return isWordInString(word, string, 0, index + 1)
