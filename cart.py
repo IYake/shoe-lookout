@@ -47,3 +47,17 @@ def checkout():
 	checkout_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".checkout-button")))
 	actions = ActionChains(driver)
 	actions.move_to_element(checkout_button).click().perform()
+#sign in to email 
+	driver.implicitly_wait(30)
+	username = driver.find_element_by_name("tunnelEmailInput")
+	username.clear()
+	username.send_keys(file.readline())
+	driver.implicitly_wait(10)
+	password = driver.find_element_by_name("tunnelPasswordInput")
+	password.clear()
+	password.send_keys(file.readline())
+	file.close()
+#login 
+	loginButton = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,".ch4_btn")))
+	actions = ActionChains(driver)
+	actions.move_to_element(loginButton).click().perform()
