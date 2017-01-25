@@ -1,29 +1,23 @@
-import cart, shoeNotification, shoe_checker
+import cart, shoeNotification, shoe_checker as SC
 
-#Check if shoes are correct
-#Go to shoe product page
-#Add shoe to Cart
-#Notify
+correctShoe = "Nike SB Zoom".lower()
 
-correctShoe = "Nike SB Zoom Stefan Janoski Premium High Tape"
-
-count = 0
+count = 1
 shoesMatch = False
-latestShoe = shoe_checker.updateShoe()
+latestShoe = SC.updateShoe().lower()
 
 while (not shoesMatch):
     print "checking " + str(count)
-    ##Get the latest shoe and update latestShoe variable
-    if (correctShoe == latestShoe):
+    
+    if SC.isWordInString(correctShoe, latestShoe, 0, 0):
         shoesMatch = True
     else:
         count += 1
         
-    latestShoe = shoe_checker.updateShoe()
-    
-    #stop if between 10 and 20 hours
-    if count == 72000:
+    if count == 72000: #stop checking if between 10 and 20 hours
         shoesMatch = True
+              
+    latestShoe = SC.updateShoe().lower()
         
 cart.checkout()
 
