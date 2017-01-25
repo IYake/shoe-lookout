@@ -58,7 +58,6 @@ def checkout():
 	password = driver.find_element_by_name("tunnelPasswordInput")
 	password.clear()
 	password.send_keys(file.readline())
-	file.close()
 #login 
 	loginButton = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,".ch4_btn")))
 	actions = ActionChains(driver)
