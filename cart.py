@@ -3,8 +3,6 @@ Created on Tue Oct 25 13:41:09 2016
 @author: Devin Suttles
 """
 
-
-
 import os 
 from selenium import webdriver
 from selenium.webdriver import ActionChains
@@ -26,10 +24,9 @@ def checkout():
 		driver.get("http://swoo.sh/2j8FWMT")
 	except TimeoutException:
 		driver.execute_script("window.stop();")
-#to look for newest shoe 
+
 	driver.find_element_by_class_name('product-display-name').click()
- 
- 
+#get size 
  	try: 
 		size_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".exp-pdp-size-and-quantity-container a.exp-pdp-size-dropdown")))
 	except TimeoutException:
@@ -37,14 +34,14 @@ def checkout():
 		size_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".exp-pdp-size-and-quantity-container a.exp-pdp-size-dropdown")))
 	actions = ActionChains(driver)
 	actions.move_to_element(size_button).click().perform()
-# selecting size
+	
 	size = wait.until(EC.visibility_of_element_located((By.XPATH, "//li[contains(@class, 'nsg-form--drop-down--option') and normalize-space(.) = '9.5']")))
 	actions = ActionChains(driver)
 	actions.move_to_element(size).click().perform()
  
-  	wishList = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,".pdp-mylocker")))
+  	save = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,".pdp-mylocker")))
 	actions = ActionChains(driver)
-	actions.move_to_element(wishList).click().perform()
+	actions.move_to_element(save).click().perform()
  
 	login = driver.find_element_by_name("emailAddress")
 	actions = ActionChains(driver)
