@@ -3,6 +3,8 @@ Created on Tue Oct 25 13:41:09 2016
 @author: Devin Suttles
 """
 
+
+
 import os 
 from selenium import webdriver
 from selenium.webdriver import ActionChains
@@ -15,8 +17,7 @@ from selenium.common.exceptions import TimeoutException
 chromedriver = "/Users/Ian/Downloads/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
 driver = webdriver.Chrome(chromedriver)
-#read from text file 
-file = open("Example.txt","r")
+
 
 def checkout():
 	wait = WebDriverWait(driver,10)
@@ -27,36 +28,36 @@ def checkout():
 		driver.execute_script("window.stop();")
 #to look for newest shoe 
 	driver.find_element_by_class_name('product-display-name').click()
-#size button
-	try: 
+ 
+ 
+ 	try: 
 		size_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".exp-pdp-size-and-quantity-container a.exp-pdp-size-dropdown")))
-	except TimeoutException: #if the page is loading for too long, stop it and then get size_button
+	except TimeoutException:
 		driver.execute_script("window.stop();")
 		size_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".exp-pdp-size-and-quantity-container a.exp-pdp-size-dropdown")))
-
-
 	actions = ActionChains(driver)
 	actions.move_to_element(size_button).click().perform()
 # selecting size
-	size = wait.until(EC.visibility_of_element_located((By.XPATH, file.readline())))
+	size = wait.until(EC.visibility_of_element_located((By.XPATH, "//li[contains(@class, 'nsg-form--drop-down--option') and normalize-space(.) = '9.5']")))
 	actions = ActionChains(driver)
 	actions.move_to_element(size).click().perform()
-#add to cart
-	driver.find_element_by_id("buyingtools-add-to-cart-button").click()
-#checkout
-	checkout_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".checkout-button")))
+ 
+  	wishList = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,".pdp-mylocker")))
 	actions = ActionChains(driver)
-	actions.move_to_element(checkout_button).click().perform()
-#sign in to email 
-	driver.implicitly_wait(30)
-	username = driver.find_element_by_name("tunnelEmailInput")
-	username.clear()
-	username.send_keys(file.readline())
-	driver.implicitly_wait(10)
-	password = driver.find_element_by_name("tunnelPasswordInput")
-	password.clear()
-	password.send_keys(file.readline())
-#login 
-	loginButton = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,".ch4_btn")))
+	actions.move_to_element(wishList).click().perform()
+ 
+	login = driver.find_element_by_name("emailAddress")
 	actions = ActionChains(driver)
-	actions.move_to_element(loginButton).click().perform()
+	actions.move_to_element(login).click().perform()
+	login.clear()
+	login.send_keys(file.username)
+ 
+ 	passw = driver.find_element_by_name("password")
+	actions = ActionChains(driver)
+	actions.move_to_element(passw).click().perform()
+	passw.clear()
+	passw.send_keys(file.password)
+ 
+	login_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".nike-unite-submit-button")))
+	actions = ActionChains(driver)
+	actions.move_to_element(login_button).click().perform()
