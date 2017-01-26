@@ -2,12 +2,10 @@
 """
 Created on Sat Jan 21 13:35:10 2017
 
-@author: Ian
+@author: Ian Yake
 """
 
 import requests, bs4
-
-correctShoe = "Nike SB Zoom Stefan Janoski Premium High Tape"
 
 def updateShoe():
     shoe = ""
