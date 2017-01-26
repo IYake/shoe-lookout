@@ -17,7 +17,7 @@ def notify(recipient):
  Subject: Your shoes are here\n
  
  
- Your nike shoe order has been added to cart. Check it out: https://goo.gl/8gtuWN
+ Your nike shoe order has been added to wishlist. Check it out: http://swoo.sh/2kyzrET
 """
 
     #Connect to SMTP server [Server domain name, Port]
