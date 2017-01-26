@@ -3,8 +3,6 @@ Created on Tue Oct 25 13:41:09 2016
 @author: Devin Suttles
 """
 
-
-
 import os 
 from selenium import webdriver
 from selenium.webdriver import ActionChains
@@ -18,7 +16,7 @@ chromedriver = "/Users/Ian/Downloads/chromedriver"
 os.environ["webdriver.chrome.driver"] = chromedriver
 driver = webdriver.Chrome(chromedriver)
 #read from text file 
-file = open("Nike.txt","r")
+file = open("Example.txt","r")
 
 def checkout():
 	wait = WebDriverWait(driver,10)
@@ -40,7 +38,7 @@ def checkout():
 	actions = ActionChains(driver)
 	actions.move_to_element(size_button).click().perform()
 # selecting size
-	size = wait.until(EC.visibility_of_element_located((By.XPATH, "//li[contains(@class, 'nsg-form--drop-down--option') and normalize-space(.) = '9.5']")))
+	size = wait.until(EC.visibility_of_element_located((By.XPATH, file.readline())))
 	actions = ActionChains(driver)
 	actions.move_to_element(size).click().perform()
 #add to cart
