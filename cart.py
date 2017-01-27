@@ -3,7 +3,7 @@ Created on Tue Oct 25 13:41:09 2016
 @author: Devin Suttles
 """
 
-import os,Settings
+import os, Settings
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
