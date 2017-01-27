@@ -2,7 +2,7 @@
 """
 Created on Fri Dec 23 13:41:09 2016
 
-@author: Ian
+@author: Ian Yake
 
 This file will become a function to be imported into the main.py
 """
