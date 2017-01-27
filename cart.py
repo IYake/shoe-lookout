@@ -35,11 +35,11 @@ def checkout():
 	actions = ActionChains(driver)
 	actions.move_to_element(size_button).click().perform()
 	
-	size = wait.until(EC.visibility_of_element_located((By.XPATH, "//li[contains(@class, 'nsg-form--drop-down--option') and normalize-space(.) = '9.5']")))
+	size = wait.until(EC.visibility_of_element_located((By.XPATH, "//li[contains(@class, 'nsg-form--drop-down--option') and normalize-space(.) = " + Settings.size + "]")))
 	actions = ActionChains(driver)
 	actions.move_to_element(size).click().perform()
  
-  	save = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,".pdp-mylocker")))
+        save = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,".pdp-mylocker")))
 	actions = ActionChains(driver)
 	actions.move_to_element(save).click().perform()
  
@@ -47,13 +47,13 @@ def checkout():
 	actions = ActionChains(driver)
 	actions.move_to_element(login).click().perform()
 	login.clear()
-	login.send_keys(file.username)
+	login.send_keys(Settings.username)
  
  	passw = driver.find_element_by_name("password")
 	actions = ActionChains(driver)
 	actions.move_to_element(passw).click().perform()
 	passw.clear()
-	passw.send_keys(file.password)
+	passw.send_keys(Settings.password)
  
 	login_button = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".nike-unite-submit-button")))
 	actions = ActionChains(driver)
