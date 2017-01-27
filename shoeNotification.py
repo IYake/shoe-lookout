@@ -7,11 +7,10 @@ Created on Fri Dec 23 13:41:09 2016
 This file will become a function to be imported into the main.py
 """
 
-import smtplib
+import smtplib, Settings
 
 def notify(recipient):
-    #recipient = 'iangyake@gmail.com'
-    FROM = 'shoebot3000@gmail.com'
+    FROM = Settings.botuser
     TO = recipient # Your email
     MSG = """\
  Subject: Your shoes are here\n
@@ -26,7 +25,7 @@ def notify(recipient):
 
     smtpObj.starttls() #TLS encryption for connection
 
-    smtpObj.login(FROM, '') #enter the password
+    smtpObj.login(FROM, Settings.botpassw) #enter the password
 
     smtpObj.sendmail(FROM, TO, MSG)
 
